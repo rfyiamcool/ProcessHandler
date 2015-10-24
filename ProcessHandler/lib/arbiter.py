@@ -19,8 +19,6 @@ from ProcessHandler.lib.utils import (getcwd, daemonize, set_non_blocking, close
                             reopen_log_file, _setproctitle, set_process_owner, chown,
                             str2bool, get_user_info, import_app, reopen_log_file)
 
-logger = setup_file_logging('extractor','extractor.log')
-
 class Arbiter(object):
 
     PIPE = []
@@ -152,13 +150,14 @@ class Arbiter(object):
 
         _setproctitle(self.master_name)
         self.pid = os.getpid()
-        logger.info("%s"%self.pid)
+        self.file_logger.info("Master Pid --> %s"%self.pid)
         try:
             if self.pidfile:
                 self.pidfile.create(self.pid)
                 # chown(self.pidfile.fname, self.uid, self.gid)
         except Exception,e:
-            logger.info(str(e))
+            self.file_logger.info(str(e))
+        self.file_logger.info("aa")
 
         self.init_signals()
 

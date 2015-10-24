@@ -15,9 +15,11 @@ def setup_logging(conf_file_name):
     logging.setLoggerClass(Utf8Logger)
     fileConfig(conf_file_name, dict(__file__=conf_file_name, here=os.path.dirname(conf_file_name)), disable_existing_loggers=0)
 
-DEFAULT_FORMAT = '[%(asctime)s] %(levelname)s extractor "%(message)s"'
+DEFAULT_FORMAT = '[%(asctime)s] %(levelname)s jobexecute "%(message)s"'
 
 def setup_file_logging(logger_name, file_name, level=logging.INFO, log_format=DEFAULT_FORMAT, propagate=0):
+    logger_name = 'jobexecute'
+    file_name = 'master.log'
     logger = logging.getLogger(None if logger_name == "root" else logger_name)
     logger.propagate = propagate
     logger.setLevel(level)
@@ -29,5 +31,5 @@ def setup_file_logging(logger_name, file_name, level=logging.INFO, log_format=DE
     return logger
 
 if __name__ == "__main__":
-    logger = setup_file_logging('extractor','extractor.log')
+    logger = setup_file_logging('jobexecute','master.log')
     logger.info('main')

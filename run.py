@@ -10,7 +10,7 @@ EXTRACTOR = "jobexecute:JobExecute"
 def main():
     args = parse_args()
     config_file = getattr(args, 'config')
-    section = getattr(args, 'section') or "extractor"
+    section = getattr(args, 'section') or "jobexecute"
     if config_file:
         if config_file[0] != '/':
             config_file = os.path.join(os.getcwd(), os.path.abspath(config_file))
