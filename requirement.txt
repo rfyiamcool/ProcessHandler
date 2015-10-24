@@ -1,0 +1,4 @@
+gevent
+setproctitle
+ConfigParser
+msgpack-python
