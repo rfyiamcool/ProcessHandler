@@ -51,6 +51,8 @@ number_workers          = 2
 
 ##简单的用法
 
+下面是主要处理任务模块.  根据自己的场景，直接copy代码就可以了.
+
 ```
 # coding=utf-8
 
@@ -61,15 +63,15 @@ import traceback
 from ProcessHandler.lib.log import setup_file_logging
 from ProcessHandler.lib.workers.sync import SyncWorker
 
-logger = setup_file_logging('jobexecute','master.log')
+
 class JobExecute(SyncWorker):
 
     LOGGER_NAME = "jobexecute"
 
     def __init__(self, cfg, file_logger=None, ppid=None, sockets=None):
         SyncWorker.__init__(self, cfg, file_logger, ppid)
-#        setup_file_logging(self.LOGGER_NAME, self.cfg.log_file)
-#        self.logger = logging.getLogger(self.LOGGER_NAME)
+        setup_file_logging(self.LOGGER_NAME, self.cfg.log_file)
+        self.logger = logging.getLogger(self.LOGGER_NAME)
 
     def setup(self):
         super(JobExecute, self).setup()
