@@ -1,0 +1,6 @@
+tags
+.pyc
+*.pyc
+*.swp
+*.log
+*.pid
