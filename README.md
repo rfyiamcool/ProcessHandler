@@ -8,6 +8,11 @@
 
 不管是gunicorn or uwsgi的Master Worker ,Prefork 跟wsgi耦合的太紧密... 结果呢? 这项目就是结果!  更多的内幕及后续的文档更新,我会放在我博客里面,有兴趣的朋友可以瞅瞅 [xiaorui.cc](http://xiaorui.cc/2015/10/25/%E7%AE%80%E5%8C%96gunicorn%E6%BA%90%E4%BB%A3%E7%A0%81%E6%89%93%E9%80%A0master-worker%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/)
 
+要做的事情:
+
+* 文档的更新,现在的项目说明是在是太过简陋.
+* 要在ProcessHandler上开发一个高性能的RPC示例代码. 
+
 
 ![master worker frame](static/master_worker.png)
 
