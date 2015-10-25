@@ -6,9 +6,20 @@
 
 设计思想跟代码实现(包括代码片段) 及其认真的参考了gunicorn框架[详细介绍](http://gunicorn.org/) . 可能有些朋友在纳闷、疑惑. 怀疑我为毛又在造轮子,但我想说的是gunicorn代码理解起来不简单,有不少的UNIX设计艺术在里面. 回归重点, gunicorn的代码质量很高,实现的prefork也很是优雅,但是他更多是为web frame打造的. 我如果只是想做个Master Worker这样的进程管理,以及基于这进程框架封装的RPC或Restful Api服务.
 
+更多的是ProcessHandler介绍及参数讲解, 请到我博客里瞅瞅 [xiaorui.cc](http://xiaorui.cc/2015/10/25/%E7%AE%80%E5%8C%96gunicorn%E6%BA%90%E4%BB%A3%E7%A0%81%E6%89%93%E9%80%A0master-worker%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/)
+
+那么我现在想做的事情是?
+
+更多的代码注释,我会把ProcessHandler主核心代码arbiter.py and worker/*.py 讲解清楚.
+基于ProcessHandler开发一个RPC的示例代码.
+
 ![master worker frame](static/master_worker.png)
 
 ----
+##现在还有的问题:
+
+* pid文件写入有问题
+* 多实例控制问题
 
 ##文档说明
 
