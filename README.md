@@ -18,7 +18,9 @@
 
 设计思想跟代码实现(包括代码片段) 极其认真的参考了gunicorn框架 [详细介绍](http://gunicorn.org/) . 可能有些朋友在纳闷、疑惑. 怀疑我为毛又在造轮子,但我想说的是gunicorn代码理解起来不简单,里面还真有不少UNIX设计艺术在里面. 再提一句, gunicorn的代码质量很高,实现的prefork也很是优雅,但是他更多是为web framework打造的.当用gunicorn启动web应用的时候,其实gunicorn为后面的几个web做了各方面的适配. 那我如果只是想做个Master Worker这样的进程管理,那么gunicorn是做不到的,除非是你改gunicorn代码,如果又想基于刚才说的进程框架之上封装一个RPC或Restful Api服务,那么又咋办?  我的回答是,直接重写一个适合自己的.  我曾经视图改过gunicorn和uwsgi的代码,好融合我以前写过的RPC服务,但世事难料... ...  
 
-不管是gunicorn or uwsgi的Master Worker ,Prefork 跟wsgi耦合的太紧密... 结果呢? 这项目就是结果!  更多的内幕及后续的文档更新,我会放在我博客里面,有兴趣的朋友可以瞅瞅 [xiaorui.cc](http://xiaorui.cc/2015/10/25/%E7%AE%80%E5%8C%96gunicorn%E6%BA%90%E4%BB%A3%E7%A0%81%E6%89%93%E9%80%A0master-worker%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/)
+不管是gunicorn or uwsgi的Master Worker ,Prefork 跟wsgi耦合的太紧密... 结果呢? 这项目就是结果!  
+
+更多的内幕及后续的文档更新,我会放在我博客里面,有兴趣的朋友可以瞅瞅 [http://xiaorui.cc/?p=2219](http://xiaorui.cc/2015/10/25/%E7%AE%80%E5%8C%96gunicorn%E6%BA%90%E4%BB%A3%E7%A0%81%E6%89%93%E9%80%A0master-worker%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/)
 
 ####要做的事情:
 
