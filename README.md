@@ -1,5 +1,7 @@
 # 项目名:
-`ProcessHandler`
+`ProcessHandler`  
+
+为避免被喷,这里提前申明下ProcessHandle的设计思想跟代码实现极其认真的`参考`并`抄袭` 开源gunicorn框架 [详细介绍](http://gunicorn.org/) . 换句话说ProcessHandle是基于gunicorn开发的.
 
 ##用途:
 简单理解为这是一个` Master Worker `框架. 可以说跟nginx的进程管理模式相似的.
@@ -16,7 +18,7 @@
 
 ##闲扯:
 
-设计思想跟代码实现(包括代码片段) 极其认真的参考了gunicorn框架 [详细介绍](http://gunicorn.org/) . 可能有些朋友在纳闷、疑惑. 怀疑我为毛又在造轮子,但我想说的是gunicorn代码理解起来不简单,里面还真有不少UNIX设计艺术在里面. 再提一句, gunicorn的代码质量很高,实现的prefork也很是优雅,但是他更多是为web framework打造的.当用gunicorn启动web应用的时候,其实gunicorn为后面的几个web做了各方面的适配. 那我如果只是想做个Master Worker这样的进程管理,那么gunicorn是做不到的,除非是你改gunicorn代码,如果又想基于刚才说的进程框架之上封装一个RPC或Restful Api服务,那么又咋办?  我的回答是,直接重写一个适合自己的.  我曾经视图改过gunicorn和uwsgi的代码,好融合我以前写过的RPC服务,但世事难料... ...  
+可能有些朋友在纳闷、疑惑. 怀疑我为毛又在造轮子,但我想说的是gunicorn代码理解起来不简单,里面还真有不少UNIX设计艺术在里面. 再提一句, gunicorn的代码质量很高,实现的prefork也很是优雅,但是他更多是为web framework打造的.当用gunicorn启动web应用的时候,其实gunicorn为后面的几个web做了各方面的适配. 那我如果只是想做个Master Worker这样的进程管理,那么gunicorn是做不到的,除非是你改gunicorn代码,如果又想基于刚才说的进程框架之上封装一个RPC或Restful Api服务,那么又咋办?  我的回答是,直接重写一个适合自己的.  我曾经视图改过gunicorn和uwsgi的代码,好融合我以前写过的RPC服务,但世事难料... ...  
 
 不管是gunicorn or uwsgi的Master Worker ,Prefork 跟wsgi耦合的太紧密... 结果呢? 这项目就是结果!  
 
