@@ -4,7 +4,15 @@
 ##用途:
 简单理解为这是一个` Master Worker `框架. 可以说跟nginx的进程管理模式相似的.
 
+工作原理:  
+当ProcessHandle启动后，会有一个master进程和多个worker进程.master进程主要用来管理worker进程，包含：接收来自外界的信号，向各worker进程发送信号，监控worker进程的运行状态，当worker进程退出后(异常情况下)，会自动重新启动新的worker进程.   
+对于每个worker进程来说，独立的进程，不需要加锁，所以省掉了锁带来的开销，同时在编程以及问题查找时，也会方便很多。其次，采用独立的进程，可以让互相之间不会影响，一个进程退出后，其它进程还在工作，服务不会中断，master进程则很快启动新的worker进程。当然，worker进程的异常退出，肯定是程序有bug了，异常退出，会导致当前worker上的所有请求失败，不过不会影响到所有请求，所以降低了风险。当然，好处还有很多，大家可以慢慢体会。  
 ![master worker frame](static/master_worker.png)
+
+另外说下`prefork`工作模型,每个worker进程都是从master进程fork过来.在master进程里面，先建立好需要listen的socket之后，然后再fork出多个worker进程，这样每个worker进程都可以去accept这个socket(当然不是同一个socket，只是每个进程的这个socket会监控在同一个ip地址与端口，在linux下是允许这么干的).  
+我们模拟用户请求过来的场景, 当一个连接进来后，所有在accept在这个socket上面的进程，都会收到通知，而只有一个进程可以accept这个连接，其它的则accept失败.多个worker进程之间是对等的，他们同等竞争来自客户端的请求，各进程互相之间是独立的.一个请求，只可能在一个worker进程中处理，一个worker进程，不可能处理其它进程的请求. worker进程的个数是可以设置的，一般我们会设置与机器cpu核数一致.
+
+![master worker frame](static/prefork.jpg)
 
 ##闲扯:
 
