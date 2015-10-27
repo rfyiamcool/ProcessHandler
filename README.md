@@ -1,7 +1,7 @@
 # 项目名:
 `ProcessHandler`  
 
-为避免被喷,这里提前申明下ProcessHandle的设计思想跟代码实现极其认真的`参考`并`抄袭` 开源gunicorn框架 [gunicorn官方](http://gunicorn.org/) . 换句话说ProcessHandle是基于gunicorn开发的.  
+为避免被喷,这里提前申明下ProcessHandler的设计思想跟代码实现极其认真的`参考`并`抄袭` 开源gunicorn框架 [gunicorn官方](http://gunicorn.org/) . 换句话说ProcessHandler是基于gunicorn开发的.  
 
 更多的内幕及后续的文档更新, 我会放在我博客里面, 有兴趣的朋友可以瞅瞅 [http://xiaorui.cc/?p=2219](http://xiaorui.cc/2015/10/25/%E7%AE%80%E5%8C%96gunicorn%E6%BA%90%E4%BB%A3%E7%A0%81%E6%89%93%E9%80%A0master-worker%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/)
 
