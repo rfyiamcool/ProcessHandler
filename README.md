@@ -15,10 +15,10 @@ ProcessHandler是基于gunicorn改造开发的进程管理框架, 主要摘除�
 - [x] 主动重启worker
 - [x] 可封装msgpack-rpc
 - [x] 回收僵尸及孤儿进程
-- [  ] worker友好退出
-- [  ] cpu bind绑定
-- [  ] 分布式锁控制主备
-- [  ] 协程及线程接口
+- [ ] worker友好退出
+- [ ] cpu bind绑定
+- [ ] 分布式锁控制主备
+- [ ] 协程及线程接口
 
 ## 用途:
 简单理解为这是一个` Master Worker `框架. 可以说跟nginx的进程管理模式有些类似.
